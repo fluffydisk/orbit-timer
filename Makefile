@@ -1,5 +1,5 @@
 CFLAGS ?= -O2 -Wall -Wextra
-orbit-timer: orbit.c
+orbit-timer: orbit.c chess.h
 	$(CC) $(CPPFLAGS) $(CFLAGS) -std=c11 $(shell pkg-config --cflags x11 cairo) $(LDFLAGS) -o $@ $< $(shell pkg-config --libs x11 cairo) -lm
 
 check: orbit-timer

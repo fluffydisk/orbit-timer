@@ -2,7 +2,7 @@
 set -eu
 cd "$(dirname "$0")"
 make check
-version=1.1.0
+version=1.2.0
 mkdir -p dist
 out="$(pwd)/dist"
 stage=$(mktemp -d)
@@ -22,6 +22,7 @@ arch = x86_64
 depend = glibc
 depend = libx11
 depend = cairo
+depend = ttf-dejavu
 depend = xorg-xwayland
 META
 tar --owner=0 --group=0 -C "$stage" -cf - .PKGINFO usr | zstd -q -f -o "$out/orbit-timer-$version-1-x86_64.pkg.tar.zst"
@@ -34,7 +35,7 @@ Architecture: amd64
 Maintainer: Orbit Timer <fluffydisk@users.noreply.github.com>
 Section: utils
 Priority: optional
-Depends: libc6 (>= 2.34), libx11-6, libcairo2
+Depends: libc6 (>= 2.34), libx11-6, libcairo2, fonts-dejavu-core
 Recommends: xwayland
 Description: Offline circular countdown timer
  Start, pause, resume and reset a countdown in a desktop window.
