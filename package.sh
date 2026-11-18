@@ -2,7 +2,7 @@
 set -eu
 cd "$(dirname "$0")"
 make check
-version=1.0.0
+version=1.1.0
 mkdir -p dist
 out="$(pwd)/dist"
 stage=$(mktemp -d)
@@ -48,4 +48,4 @@ else
     (cd "$stage" && ar cr "$out/orbit-timer_${version}_amd64.deb" debian-binary control.tar.gz data.tar.gz)
 fi
 install -m755 orbit-timer "$out/orbit-timer-x86_64"
-(cd "$out" && sha256sum orbit-timer* > SHA256SUMS.txt)
+(cd "$out" && sha256sum "orbit-timer-$version-1-x86_64.pkg.tar.zst" "orbit-timer_${version}_amd64.deb" orbit-timer-x86_64 > SHA256SUMS.txt)
